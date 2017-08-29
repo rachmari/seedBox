@@ -85,6 +85,16 @@ sudo chown -R mysql:mysql /var/lib/mysql
 echo "Creating database tables"
 mysql -u $DBROOTUSER -p$DBROOTPASS $DBSCHEMA < /var/www/html/install/create_tables-innodb.sql
 
+# For development only allow external mysql access
+echo 'echo "bind-address = 0.0.0.0" >> /etc/mysql/my.cnf' | sudo -s
+
+# Settings for upload size
+echo 'echo "post_max_size = 0" >> /etc/php5/apache2/php.ini' | sudo -s
+echo 'echo "expose_php = Off" >> /etc/php5/apache2/php.ini' | sudo -s
+echo 'echo "session.cookie_lifetime = 172800" >> /etc/php5/apache2/php.ini' | sudo -s
+echo 'echo "upload_max_filesize = 60M" >> /etc/php5/apache2/php.ini' | sudo -s
+echo 'echo "default_charset = "UTF-8"" >> /etc/php5/apache2/php.ini' | sudo -s
+
 sudo service mysql restart
 sudo service apache2 restart
 
