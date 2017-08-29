@@ -1,5 +1,5 @@
 
-SeedDMSBox is a pre-configured LAMP Vagrant box that installs all dependencies to get a custom version of [SeedDMS 5.0](http://github.com/rachmari/seeddms) working right out of the box.
+SeedBox is a pre-configured LAMP Vagrant box that installs all dependencies to get a custom version of [SeedDMS 5.0](http://github.com/rachmari/seeddms) working right out of the box.
 
 # Overview
 To use this Vagrant Box, you must have [Vagrant](http://vagrantup.com) and [VirtualBox](https://www.virtualbox.org) installed.
@@ -47,14 +47,14 @@ Create your SeedDMS settings file:
 
 Clone this repository:
 
-    $ git clone https://github.com/rachmari/devspace.git
+    $ git clone https://github.com/rachmari/seedBox.git
     
 Configure and provision your Vagrant Box:
 
-    $ cd /devspace
+    $ cd /seedBox
     $ vagrant up
     
-Copy the settings.xml to the devspace/projects/seeddms/conf directory.
+Copy the settings.xml to the seedBox/shared/seeddms/conf directory.
     
 That's all! Go to [http://192.168.33.10](http://192.168.33.10) to see your SeedDMS installation.
 
@@ -69,9 +69,7 @@ http:  Host port 8080 -> guest port 80
 mysql: Localhost port 3309 -> guest port 3306
 ip:    192.168.33.10
 ```
-All packages are installed from the provisioning script. This repo contains two directories: vagrant and projects. The vagrant directory contains the provisioning script `bootstrap.sh` which will be executed automatically when you run `vagrant up`. The seeddms source is downloaded to the `projects` directory by the provisioning script. This directory is a shared folder accessible from the host machine and the guest machine. This directory is synced with `/var/www` directory in the virtual machine. 
-
-This project folder also contain a `config` folder can be used to store configuration files used during provisioning.
+All packages are installed from the provisioning script. This repo contains two directories: vagrant and shared. The vagrant directory contains the provisioning script `bootstrap.sh` which will be executed automatically when you run `vagrant up`. The seedDMS source code is downloaded to the `shared` directory from the provisioning script. This directory is a shared folder accessible from the host machine and the guest machine. This directory is synced with `/var/www` directory in the virtual machine. 
 
 # Default Credentials
 These are credentials setup by default.
