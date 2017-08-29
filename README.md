@@ -98,7 +98,7 @@ username: root
 password: root
 port: 3306
 ```
-To connect to the development vagrant machine with Sequel Pro from the host machine, use the forwarded port number:
+To connect to the development vagrant machine with Sequel Pro from the host machine, use the forwarded port number. Note that if `bind-address` is defined as `127.0.0.1` in `/etc/mysql/my.cnf`, this connection will not be availabe from the host machine. The provisioning script sets the `bind-address` to 0.0.0.0 to allow this connection.
 ```
 host:     127.0.0.1
 username: root
