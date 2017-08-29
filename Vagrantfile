@@ -10,16 +10,14 @@ Vagrant.configure(2) do |config|
 
   # Setup network
   config.vm.network "private_network", ip: "192.168.33.10"
-  # Deployment network
-  #config.vm.network "public_network", ip: "192.168.8.33"
 
   # Setup synced folder
-    config.vm.synced_folder "projects/", "/var/www", group: "www-data", owner: "vagrant", :mount_options => ['dmode=775', 'fmode=775']
+  config.vm.synced_folder "shared/", "/var/www", group: "www-data", owner: "vagrant", :mount_options => ['dmode=775', 'fmode=775']
 
   # CUSTOMIZATION
-   config.vm.provider "virtualbox" do |vb|
+  config.vm.provider "virtualbox" do |vb|
 
-     vb.name = "seeddms5.0"
+     vb.name = "seedBox"
   
      # Customize the amount of memory on the VM:
      vb.memory = "1024"
@@ -28,11 +26,9 @@ Vagrant.configure(2) do |config|
 
 
   # PROVISION
-  # config.vm.provision :shell, path: “vagrant/bootstrap.sh"
-   # Shell provisioning
-    config.vm.provision "shell" do |s|
+  config.vm.provision "shell" do |s|
       s.path = "vagrant/bootstrap.sh"
-    end
+  end
   
   # View the documentation for the provider you are using for more
   # information on available options.
