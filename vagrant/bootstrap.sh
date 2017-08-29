@@ -86,9 +86,15 @@ echo "Creating database tables"
 mysql -u $DBROOTUSER -p$DBROOTPASS $DBSCHEMA < /var/www/html/install/create_tables-innodb.sql
 
 # For development only allow external mysql access
+echo 'echo "#########################################" >> /etc/mysql/my.cnf' | sudo -s
+echo 'echo " Appended by seedBox provisioning script" >> /etc/mysql/my.cnf' | sudo -s
+echo 'echo "#########################################" >> /etc/mysql/my.cnf' | sudo -s
 echo 'echo "bind-address = 0.0.0.0" >> /etc/mysql/my.cnf' | sudo -s
 
 # Settings for upload size
+echo 'echo "#########################################" >> /etc/mysql/my.cnf' | sudo -s
+echo 'echo " Appended by seedBox provisioning script" >> /etc/mysql/my.cnf' | sudo -s
+echo 'echo "#########################################" >> /etc/mysql/my.cnf' | sudo -s
 echo 'echo "post_max_size = 0" >> /etc/php5/apache2/php.ini' | sudo -s
 echo 'echo "expose_php = Off" >> /etc/php5/apache2/php.ini' | sudo -s
 echo 'echo "session.cookie_lifetime = 172800" >> /etc/php5/apache2/php.ini' | sudo -s
