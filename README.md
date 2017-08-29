@@ -71,6 +71,8 @@ ip:    192.168.33.10
 ```
 All packages are installed from the provisioning script. This repo contains two directories: vagrant and shared. The vagrant directory contains the provisioning script `bootstrap.sh` which will be executed automatically when you run `vagrant up`. The seedDMS source code is downloaded to the `shared` directory from the provisioning script. This directory is a shared folder accessible from the host machine and the guest machine. This directory is synced with `/var/www` directory in the virtual machine. 
 
+The provisioning script writes some variables to the /etc/php5/apache2/php.ini and /etc/mysql/my.cnf files on the vagrant box. Variables are overwritten by appending the redeclared variable to the end of the files.
+
 # Default Credentials
 These are credentials setup by default.
 
@@ -96,9 +98,7 @@ username: root
 password: root
 port: 3306
 ```
-To connect to the development vagrant machine with Sequel Pro from the host machine:
-
-Comment out the line `bind-address		= 127.0.0.1` in: `/etc/mysql/my.cnf` then restart mysql `sudo service mysql restart`
+To connect to the development vagrant machine with Sequel Pro from the host machine, use the forwarded port number:
 ```
 host:     127.0.0.1
 username: root
